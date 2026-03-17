@@ -19,6 +19,7 @@ export class ZBtn {
   size = input<'sm' | 'md' | 'lg'>('md');
   disabled = input(false);
   block = input(false);
+  btnClass = input('');
   
   clicked = output<MouseEvent>();
 
@@ -43,6 +44,10 @@ export class ZBtn {
       base += ' border border-luxury-black text-luxury-black hover:bg-luxury-black hover:text-luxury-white focus:ring-luxury-black font-medium leading-none';
     } else if (v === 'ghost') {
       base += ' text-luxury-black hover:bg-zinc-100 focus:ring-zinc-200 font-medium leading-none';
+    }
+    
+    if (this.btnClass()) {
+      base += ' ' + this.btnClass();
     }
     
     return base;

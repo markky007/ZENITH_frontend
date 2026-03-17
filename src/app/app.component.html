@@ -1,2 +1,15 @@
-<router-outlet></router-outlet>
+<!-- Global Navigation Header -->
+<header class="fixed top-0 w-full z-40 bg-luxury-white/90 backdrop-blur-md border-b border-platinum transition-transform duration-300">
+  <div class="px-6 mx-auto pt-2 pb-1">
+    <div class="flex justify-center mb-2">
+      <span class="font-serif tracking-[0.2em] text-2xl text-luxury-black">ZENITH</span>
+    </div>
+    <z-navigation-menu [items]="navItems()"></z-navigation-menu>
+  </div>
+</header>
+
+<main class="min-h-screen pt-8">
+  <router-outlet></router-outlet>
+</main>
+
 <app-cart-drawer></app-cart-drawer>

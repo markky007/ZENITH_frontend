@@ -1,6 +1,10 @@
 import { Routes } from '@angular/router';
+import { Home } from './features/home/home';
 
 export const routes: Routes = [
+  // Home Page
+  { path: '', component: Home, pathMatch: 'full' },
+  
   // Authentication & Identity
   { path: 'auth', loadChildren: () => import('./features/auth/auth.routes').then(m => m.authRoutes) },
   
@@ -15,7 +19,4 @@ export const routes: Routes = [
   
   // Phase 4: Admin Back-office
   { path: 'admin', loadChildren: () => import('./features/admin/admin.routes').then(m => m.adminRoutes) },
-  
-  // Default route
-  { path: '', redirectTo: 'products', pathMatch: 'full' },
 ];
