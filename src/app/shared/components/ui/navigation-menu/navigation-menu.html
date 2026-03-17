@@ -1,20 +1,10 @@
 <nav class="z-nav-menu" [class.z-nav-menu--disabled]="isDisabled()">
-  <ul 
-    class="z-nav-menu__list" 
-    cdkDropList 
-    cdkDropListOrientation="horizontal" 
-    (cdkDropListDropped)="onDrop($event)"
-    [cdkDropListDisabled]="isDisabled()"
-  >
+  <ul class="z-nav-menu__list">
     @for (item of internalItems(); track item.id) {
       <li 
         class="z-nav-menu__item" 
-        cdkDrag 
-        cdkDragLockAxis="x"
         [class.z-nav-menu__item--active]="activeId() === item.id"
       >
-        <!-- The custom drag placeholder -->
-        <div *cdkDragPlaceholder class="z-nav-menu__placeholder"></div>
         
         <a 
           [routerLink]="item.link" 
