@@ -59,15 +59,17 @@ import { ZBtn } from '../../../shared/components/ui/z-btn/z-btn';
             
             <div class="mt-12 border-t border-platinum pt-6">
               <details class="group cursor-pointer">
-                <summary class="flex justify-between items-center font-sans tracking-widest text-sm uppercase list-none">
+                <summary class="flex justify-between items-center font-sans tracking-widest text-sm uppercase list-none outline-none">
                   <span>Product Details</span>
-                  <span class="transition group-open:rotate-180">▼</span>
+                  <span class="transition-transform duration-300 group-open:rotate-180 text-xs">▼</span>
                 </summary>
-                <div class="text-gray-500 font-sans text-sm mt-4 leading-relaxed font-light">
-                  Water resistance: 50m<br/>
-                  Power reserve: 48 hours<br/>
-                  Case diameter: 41mm<br/>
-                  Sapphire crystal case back
+                <div class="overflow-hidden">
+                  <div class="details-content text-gray-500 font-sans text-sm mt-4 leading-relaxed font-light">
+                    Water resistance: 50m<br/>
+                    Power reserve: 48 hours<br/>
+                    Case diameter: 41mm<br/>
+                    Sapphire crystal case back
+                  </div>
                 </div>
               </details>
             </div>
@@ -91,6 +93,16 @@ import { ZBtn } from '../../../shared/components/ui/z-btn/z-btn';
     }
     .animate-slide-in-right {
       animation: slideInRight 0.8s ease-out forwards;
+    }
+    @keyframes slideDownDetails {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    details[open] .details-content {
+      animation: slideDownDetails 0.4s ease-out forwards;
+    }
+    summary::-webkit-details-marker {
+      display: none;
     }
   `]
 })
