@@ -19,7 +19,8 @@ import { RouterModule } from '@angular/router';
 export interface NavItem {
   id: string;
   label: string;
-  link: string;
+  link?: string;
+  action?: () => void;
   icon?: string;
 }
 
@@ -89,6 +90,10 @@ export class NavigationMenu implements ControlValueAccessor {
   // --- Actions ---
   selectItem(item: NavItem): void {
     if (this.isDisabled()) return;
+
+    if (item.action) {
+      item.action();
+    }
 
     this.activeId.set(item.id);
     this.onChange(item.id);

@@ -5,18 +5,31 @@
         class="z-nav-menu__item" 
         [class.z-nav-menu__item--active]="activeId() === item.id"
       >
-        
-        <a 
-          [routerLink]="item.link" 
-          class="z-nav-menu__link"
-          (click)="selectItem(item)"
-          [attr.aria-current]="activeId() === item.id ? 'page' : null"
-        >
-          @if (item.icon) {
-            <span class="z-nav-menu__icon" [innerHTML]="item.icon"></span>
-          }
-          <span class="z-nav-menu__label">{{ item.label }}</span>
-        </a>
+        @if (item.link) {
+          <a 
+            [routerLink]="item.link" 
+            class="z-nav-menu__link"
+            (click)="selectItem(item)"
+            [attr.aria-current]="activeId() === item.id ? 'page' : null"
+          >
+            @if (item.icon) {
+              <span class="z-nav-menu__icon" [innerHTML]="item.icon"></span>
+            }
+            <span class="z-nav-menu__label">{{ item.label }}</span>
+          </a>
+        } @else {
+          <button 
+            type="button"
+            class="z-nav-menu__link w-full text-left bg-transparent border-none cursor-pointer"
+            (click)="selectItem(item)"
+            [attr.aria-current]="activeId() === item.id ? 'page' : null"
+          >
+            @if (item.icon) {
+              <span class="z-nav-menu__icon" [innerHTML]="item.icon"></span>
+            }
+            <span class="z-nav-menu__label">{{ item.label }}</span>
+          </button>
+        }
       </li>
     }
   </ul>
